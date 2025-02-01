@@ -1,0 +1,537 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .cards-section {
+            background-color: #663300;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .cards-section h2 {
+            color: white;
+            font-weight: normal;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        .cards-container a {
+            text-decoration: none;
+        }
+        .cards-container a:nth-child(1) .card {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6),  rgba(0, 0, 0, 0.4)), url('images/duaxiemxanh.png') center/cover no-repeat;
+        }
+        .cards-container a:nth-child(2) .card {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/duaxiemdo.png') center/cover no-repeat;
+        }
+        .cards-container a:nth-child(3) .card {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/duata.jpg') center/cover no-repeat;
+        }
+        .cards-container a:nth-child(4) .card {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/duadau.jpg') center/cover no-repeat;
+        }
+        .cards-container a:nth-child(5) .card {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/duaxiemlun.jpg') center/cover no-repeat;
+        }
+        .cards-container a:nth-child(6) .card {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/duacongnghiep.jpg') center/cover no-repeat;
+        }
+        .cards-container a:nth-child(7) .card {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/duadua.jpg') center/cover no-repeat;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .card h3 {
+            font-size: 20px;
+            color: white;
+            text-shadow: 1px 1px 10px black;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .card p {
+            color: white;
+            text-shadow: 1px 1px 10px black;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .khung1 {
+            background-size: cover; /* Đảm bảo hình ảnh phủ đầy khung */
+            background-position: center center; /* Căn giữa hình ảnh */
+            background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+            display: flex;
+            flex-direction: column; /* Đặt các phần tử theo chiều dọc */
+            align-items: center; /* Căn giữa các phần tử */
+            justify-content: center; 
+            color: white;
+            padding: 30px; /* Thêm khoảng cách xung quanh */
+            gap: 15px; /* Khoảng cách giữa các phần tử */
+            position: relative;
+            background-attachment: fixed;
+        }
+        .khung1::before {
+            content: ""; /* Tạo lớp phủ */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8); /* Màu tối với độ trong suốt 50% */
+            z-index: 1; /* Đảm bảo lớp phủ nằm trên nền hình ảnh nhưng dưới các phần tử khác */
+        }
+        .khung1#duaxiemxanh {
+            background-image: url('images/duaxiemxanh.png');
+        }
+        .khung1#duaxiemdo {
+            background-image: url('images/duaxiemdo.png');
+        }
+        .khung1#duata {
+            background-image: url('images/duata.jpg');
+        }       
+        .khung1#duadau {
+            background-image: url('images/duadau.jpg');
+        }
+        .khung1#duaxiemlun {
+            background-image: url('images/duaxiemlun.jpg');
+        }
+        .khung1#duacongnghiep {
+            background-image: url('images/duacongnghiep.jpg');
+        }
+        .khung1#duadua {
+            background-image: url('images/duadua.jpg');
+        }
+        .khung1 h2, .khung1 table {
+            position: relative;
+            z-index: 2;
+        }
+        .bang1 {
+            width: 90%; /* Bảng chiếm toàn bộ chiều rộng */
+            border-collapse: collapse; /* Để các viền bảng không bị chồng chéo */
+        }
+        .bang1 th {
+            background-color: #336600;
+            font-size: 20px;
+            border: none;  
+        }
+        .bang1 td {
+            font-size: 18px;
+        }
+        .bang1 td, th {
+            padding: 15px; 
+            text-align: center; 
+            border: 2px solid #336600;
+        }
+        .bang2 {
+            width: 90%; /* Bảng chiếm toàn bộ chiều rộng */
+            border-collapse: collapse; /* Để các viền bảng không bị chồng chéo */
+        }
+        .bang2 th {
+            background-color: #CC6600;
+            font-size: 20px;
+        }            
+        .bang2 td {
+            font-size: 18px;
+        }
+        .bang2 td, th {
+            padding: 15px; 
+            text-align: center; 
+            border: 2px solid #CC6600;
+        }
+
+        .product-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 0px;
+            width: 90%;
+            position: relative; /* Đảm bảo các ô mua hàng có z-index cao hơn */
+            z-index: 2; /* Đặt z-index để hiển thị lên trên lớp phủ */
+        }
+        .product-link {
+            display: block;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            overflow: hidden;
+        }
+        .product-link:hover {
+            transform: scale(1.05);
+        }
+        .product-image {
+            width: 100%;
+            max-height: 250px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-link span {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+    </style>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Thanh trên cùng -->
+    <div class="top-bar">
+        <div>DỪA - BIỂU TƯỢNG TỈNH BẾN TRE</div>
+        <div class="social-links">
+            <span>Tìm hiểu thêm</span>
+            <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/watch?v=1vUJ6PdBg-Q" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Phần header -->
+    <div class="header">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <!--Nút menu-->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar">
+            <button class="close-btn">&times;</button>
+            <ul>
+                <li><a href="index.html">TRANG CHỦ</a></li>
+                <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+                <li><a href="vaitro.html">ỨNG DỤNG</a></li>
+                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+            </ul>
+            <div class="social-links">
+                <span>Tìm hiểu thêm</span>
+                <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1vUJ6PdBg-Q" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <!---->
+        <nav>
+            <ul>
+                <li><a href="index.html">TRANG CHỦ</a></li>
+                <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+                <li><a href="vaitro.html">ỨNG DỤNG</a></li>
+                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!--Khung giới thiệu-->
+    <div class="cards-section">
+        <h2>Trái dừa Bến Tre, biểu tượng của "Xứ Dừa" Việt Nam, phát triển mạnh mẽ nhờ khí hậu nhiệt đới, đất đai màu mỡ và hệ thống sông ngòi chằng chịt. Đây không chỉ là cây trồng chủ lực mà còn là niềm tự hào văn hóa của người dân Bến Tre.</h2>
+        <div class="cards-container">
+            <a href="#duaxiemxanh">
+            <div class="card">
+                <h3>Dừa xiêm xanh</h3>
+                <p>Trái nhỏ, vỏ mỏng, nước ngọt ...</p>
+            </div>
+            </a>
+            <a href="#duaxiemdo">
+            <div class="card">
+                <h3>Dừa xiêm đỏ</h3>
+                <p>Vỏ trái màu đỏ cam, nước ngọt ...</p>
+            </div>
+            </a>
+            <a href="#duata">
+            <div class="card">
+                <h3>Dừa ta</h3>
+                <p>Trái lớn, vỏ dày, cơm dừa cứng, béo ...</p>
+            </div>
+            </a>
+            <a href="#duadau">
+            <div class="card">
+                <h3>Dừa dâu</h3>
+                <p>Trái nhỏ, vỏ xanh nhạt, vàng ...</p>
+            </div>
+            </a>
+            <a href="#duaxiemlun">
+            <div class="card">
+                <h3>Dừa xiêm lùn</h3>
+                <p>Cây thấp, dễ thu hoạch, cho trái sớm ...</p>
+            </div>
+            </a>
+            <a href="#duacongnghiep">
+            <div class="card">
+                <h3>Dừa công nghiệp</h3>
+                <p>Trái lớn, cơm dừa dày, nhiều dầu ...</p>
+            </div>
+            </a>
+            <a href="#duadua">
+            <div class="card">
+                <h3>Dừa dứa</h3>
+                <p>Lá và nước có mùi thơm đặc trưng ...</p>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <!--Dừa xiêm xanh-->
+    <div class="khung1" id="duaxiemxanh">
+        <h2 style="font-size: 30px;">1. Dừa xiêm xanh</h2>
+        <table class="bang1">
+            <tr>
+                <th>Đặc điểm</th>
+                <th>Công dụng</th>
+            </tr>
+            <tr>
+                <td>Trái nhỏ, vỏ mỏng, nước ngọt thanh tự nhiên.</td>
+                <td rowspan="2">Dùng để uống nước giải khát.</td>
+            </tr>
+            <tr>
+                <td>Cơm dừa mềm, mỏng, phù hợp để ăn tươi.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Là giống dừa phổ biến nhất tại Bến Tre.</td>
+            </tr>
+        </table>
+        <h2 style="font-size: 25px; font-weight: normal;">Các web bán hàng:</h2>
+        <div class="product-links">
+            <a href="https://thegioicaytrong.vn/giong-dua-xiem-xanh.html" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duaxiemxanh1.jpeg" alt="Dừa xiêm xanh" class="product-image">
+                <span>Giống Dừa Xiêm Xanh</span>
+            </a>
+            <a href="https://nhanong24h.com/dua-xiem-xanh/" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duaxiemxanh2.jpeg" alt="Dừa xiêm xanh" class="product-image">
+                <span>Dừa Xiêm Xanh, cây giống F1, khỏe mạnh, sai trái, nhiều nước</span>
+            </a>
+        </div>
+    </div>
+    <!--Dừa xiêm đỏ-->
+    <div class="khung1" id="duaxiemdo">
+        <h2 style="font-size: 30px;">2. Dừa xiêm đỏ</h2>
+        <table class="bang2">
+            <tr>
+                <th>Đặc điểm</th>
+                <th>Công dụng</th>
+            </tr>
+            <tr>
+                <td>Vỏ trái màu đỏ cam nổi bật, nước ngọt đậm hơn xiêm xanh.</td>
+                <td rowspan="2">Uống nước giải khát.</td>
+            </tr>
+            <tr>
+                <td>Thích hợp trồng làm cảnh nhờ màu sắc bắt mắt.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Giá trị thương mại cao hơn xiêm xanh.</td>
+            </tr>
+        </table>
+        <h2 style="font-size: 25px; font-weight: normal;">Các web bán hàng:</h2>
+        <div class="product-links">
+            <a href="https://thegioicaytrong.vn/giong-dua-xiem-do.html" class="product-link" style="background-color: rgba(204, 102, 0, 0.6);">
+                <img src="images/duaxiemdo1.jpeg" alt="Dừa xiêm đỏ" class="product-image">
+                <span>Giống Dừa Xiêm Đỏ</span>
+            </a>
+            <a href="https://thegioicaygiong.com/product/cay-giong-dua-xiem-do" class="product-link" style="background-color: rgba(204, 102, 0, 0.6);">
+                <img src="images/duaxiemdo2.jpeg" alt="Dừa xiêm dỏ" class="product-image">
+                <span>Cây Giống Dừa Xiêm Đỏ</span>
+            </a>
+        </div>        
+    </div>
+    <!--Dừa ta-->
+    <div class="khung1" id="duata">
+        <h2 style="font-size: 30px;">3. Dừa ta</h2>
+        <table class="bang1">
+            <tr>
+                <th>Đặc điểm</th>
+                <th>Công dụng</th>
+            </tr>
+            <tr>
+                <td>Trái lớn, vỏ dày, cơm dừa cứng và béo.</td>
+                <td rowspan="2">Lấy cơm dừa để chế biến dầu dừa, kẹo dừa, mứt dừa.</td>
+            </tr>
+            <tr>
+                <td>Lượng nước ít, không ngọt bằng dừa xiêm.</td>
+            </tr>
+        </table>
+        <h2 style="font-size: 25px; font-weight: normal;">Các web bán hàng:</h2>
+        <div class="product-links">
+            <a href="https://thegioicaygiong.com/product/cay-giong-dua-ta" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duata1.jpeg" alt="Dừa ta" class="product-image">
+                <span>Cây Giống Dừa Ta</span>
+            </a>
+            <a href="https://nhavuonkhanhvo.com/products/cay-dua-ta-giong-cao-1m-1-2m-dua-ta-vang" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duata2.jpeg" alt="Dừa ta" class="product-image">
+                <span>Cây Dừa Ta Giống Cao 1,5m - Dừa Ta Vàng</span>
+            </a>
+        </div>
+    </div>
+    <!--Dừa dâu-->
+    <div class="khung1" id="duadau">
+        <h2 style="font-size: 30px;">4. Dừa dâu</h2>
+        <table class="bang2">
+            <tr>
+                <th>Đặc điểm</th>
+                <th>Công dụng</th>
+            </tr>
+            <tr>
+                <td>Trái nhỏ, hình tròn, vỏ xanh nhạt hoặc vàng.</td>
+                <td rowspan="2">Uống nước tươi.</td>
+            </tr>
+            <tr>
+                <td>Nước ngọt đậm, giàu dinh dưỡng.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Giá trị kinh tế cao nhờ chất lượng nước đặc biệt.</td>
+            </tr>
+        </table>
+        <h2 style="font-size: 25px; font-weight: normal;">Các web bán hàng:</h2>
+        <div class="product-links">
+            <a href="https://thegioicayxanh.com.vn/san-pham/cay-dua" class="product-link" style="background-color: rgba(204, 102, 0, 0.6);">
+                <img src="images/duadau1.jpeg" alt="Dừa dâu" class="product-image">
+                <span>Cây dừa dâu</span>
+            </a>
+            <a href="https://www.cayantrai.org/ban-giong-dua-dau-chat-luong-gia-re/" class="product-link" style="background-color: rgba(204, 102, 0, 0.6);">
+                <img src="images/duadau2.jpeg" alt="Dừa dâu" class="product-image">
+                <span>Bán giống dừa dâu chất lượng giá rẻ</span>
+            </a>
+        </div>        
+    </div>
+    <!--Dừa xiêm lùn-->
+    <div class="khung1" id="duaxiemlun">
+        <h2 style="font-size: 30px;">5. Dừa xiêm lùn</h2>
+        <table class="bang1">
+            <tr>
+                <th>Đặc điểm</th>
+                <th>Công dụng</th>
+            </tr>
+            <tr>
+                <td>Cây thấp, dễ thu hoạch, cho trái sớm và năng suất cao.</td>
+                <td rowspan="2">Dùng để uống nước tại chỗ.</td>
+            </tr>
+            <tr>
+                <td>Nước ngọt, cơm dừa mỏng.</td>
+            </tr>
+        </table>
+        <h2 style="font-size: 25px; font-weight: normal;">Các web bán hàng:</h2>
+        <div class="product-links">
+            <a href="https://thegioicaygiong.com/product/cay-giong-dua-xiem-xanh-lun" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duaxiemlun1.jpeg" alt="Dừa xiêm lùn" class="product-image">
+                <span>Cây Giống Dừa Xiêm Xanh Lùn</span>
+            </a>
+            <a href="https://thegioicaytrong.vn/giong-dua-xiem-lun.html" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duaxiemlun2.jpeg" alt="Dừa xiêm lùn" class="product-image">
+                <span>Giống Dừa Xiêm Lùn</span>
+            </a>
+        </div>
+    </div>
+    <!--Dừa công nghiệp-->
+    <div class="khung1" id="duacongnghiep">
+        <h2 style="font-size: 30px;">6. Dừa công nghiệp</h2>
+        <table class="bang2">
+            <tr>
+                <th>Đặc điểm</th>
+                <th>Công dụng</th>
+            </tr>
+            <tr>
+                <td>Trái lớn, cơm dừa dày, nhiều dầu.</td>
+                <td rowspan="2">Chế biến dầu dừa, than gáo dừa, xơ dừa và các sản phẩm công nghiệp.</td>
+            </tr>
+            <tr>
+                <td>Cây cao, tuổi thọ lâu dài.</td>
+            </tr>
+        </table>
+        <h2 style="font-size: 25px; font-weight: normal;">Các web bán hàng:</h2>
+        <div class="product-links">
+            <a href="https://nhanong24h.com/dua-xiem-xanh/" class="product-link" style="background-color: rgba(204, 102, 0, 0.6);">
+                <img src="images/duaxiemxanh1.jpeg" alt="Dừa xiêm xanh" class="product-image">
+                <span>Dừa Xiêm Xanh, cây giống F1, khỏe mạnh, sai trái, nhiều nước</span>
+            </a>
+            <a href="https://chohoakieng.vn/cay-giong/cay-giong-dua-xiem-xanh/" class="product-link" style="background-color: rgba(204, 102, 0, 0.6);">
+                <img src="images/duaxiemxanh2.jpeg" alt="Dừa xiêm xanh" class="product-image">
+                <span>Cây Giống Dừa Xiêm Xanh</span>
+            </a>
+        </div>        
+    </div>
+    <!--Dừa dứa-->
+    <div class="khung1" id="duadua">
+        <h2 style="font-size: 30px;">7. Dừa dứa</h2>
+        <table class="bang1">
+            <tr>
+                <th>Đặc điểm</th>
+                <th>Công dụng</th>
+            </tr>
+            <tr>
+                <td>Trái nhỏ, nước ngọt thanh và thơm đặc trưng.</td>
+                <td rowspan="2">Dùng làm nước giải khát cao cấp.</td>
+            </tr>
+            <tr>
+                <td>Lá và nước có mùi thơm đặc trưng giống lá dứa.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Giá trị thương mại cao, được ưa chuộng nhờ hương thơm tự nhiên độc đáo.</td>
+            </tr>
+        </table>
+        <h2 style="font-size: 25px; font-weight: normal;">Các web bán hàng:</h2>
+        <div class="product-links">
+            <a href="https://thegioicaygiong.com/product/cay-giong-dua-dua" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duadua1.jpeg" alt="Dừa dứa" class="product-image">
+                <span>Cây Giống Dừa Dứa</span>
+            </a>
+            <a href="https://thegioicaytrong.vn/giong-cay-dua-dua.html" class="product-link" style="background-color: rgba(51, 102, 0, 0.6);">
+                <img src="images/duadua2.jpeg" alt="Dừa dứa" class="product-image">
+                <span>Giống Cây Dừa Dứa</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Copyright 2025 &copy; Dừa – Biểu tượng tỉnh Bến Tre.</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Nút chia sẻ -->
+<button id="shareButton"><i class="fas fa-share"></i></button>
+<!-- Hộp chia sẻ -->
+<div id="shareBox" class="hidden">
+    <p>Sao chép hoặc chia sẻ link:</p>
+    <input type="text" id="shareLink" readonly>
+    <button id="copyLink"><i class="fas fa-copy"></i> Sao chép</button>
+    <a id="shareFacebook" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a id="shareMessenger" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+    <a id="shareZalo" target="_blank"><img src="images/zalo-icon.png" alt="Zalo"> Zalo</a>
+    <button id="closeShareBox">x</button>
+</div>
+
+<button id="scrollToTop">^</button>
+<script src="script.js"></script>
+</body>
+</html>

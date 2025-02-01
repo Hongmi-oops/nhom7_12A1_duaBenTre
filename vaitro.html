@@ -1,0 +1,453 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .section {
+            padding: 20px;
+            padding-left: 30px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-height: 200px;
+        }
+        .section.food {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('images/food.jpg') center/cover no-repeat;
+        }
+        .section.cosmetic {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('images/cosmetic.jpg') center/cover no-repeat;
+        }
+        .section.material {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('images/material.jpg') center/cover no-repeat;
+        }
+        .section.medicine {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('images/medicine.jpg') center/cover no-repeat;
+        }
+        .section.environment {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('images/environment.jpeg') center/cover no-repeat;
+        }
+        .section h2 {
+            color: #009688;
+            font-size: 27px;
+            text-shadow: 1px 1px 10px black;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
+            color: white;
+        }
+
+        .toggle-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #009688;
+            color: white;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .info-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.3s ease-in-out;
+        }
+        .info-content {
+            display: flex;
+            flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi cần */
+            align-items: center;
+            padding: 10px;
+            gap: 20px; /*khoảng cách giữa các phần tử */
+        }
+        .info-content video {
+            width: 100%; /* Đảm bảo hình ảnh/video chiếm toàn bộ chiều rộng khi màn hình nhỏ */
+            width: 400px; /* Giới hạn kích thước tối đa */
+            height: 250px;
+            margin: 0 auto; /* Căn giữa */
+        }
+        .info-content .text-content {
+            flex: 1; /* Cho phép văn bản chiếm không gian còn lại */
+            text-align: left;
+            align-items: center;
+            font-size: 18px;
+            color: white;
+            text-shadow: 1px 1px 10px black;
+        }
+        @media (max-width: 768px) {
+            .info-content {
+                flex-direction: column;
+            }
+            .info-content video {
+                max-width: 100%;
+            }
+        }
+        .product-slider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            position: relative; 
+        }
+        .product-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            text-align: center;
+            position: relative;
+        }
+        .product-item {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .product-item.active {
+            display: flex;
+        }
+        .product-item img {
+            width: 100%;
+            max-height: 150px;
+            border-radius: 5px;
+            transition: transform 0.5s ease-in-out;
+        }
+        .product-item:hover img {
+            transform: rotate(20deg);
+        }
+        .product-item a {
+            text-decoration: none;
+        }
+        .product-item p {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .product-item span.product-name {
+            display: block;
+            color: white;
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .product-item.show-description p {
+            display: block;
+        }
+        .product-item:hover span.product-name {
+            display: block;
+        }
+        .product-item:hover p {
+            display: block;
+        }
+        .product-item.clicked {
+        }
+        .product-item.clicked .product-name {
+            color: #009688;  /* Thay đổi màu chữ của tên sản phẩm khi click */
+        }
+        .product-item.clicked p {
+            color: #009688;  /* Thay đổi màu chữ mô tả khi click */
+        }
+
+        .prev-btn, .next-btn {
+            background: white;
+            color: black;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+        .prev-btn:hover, .next-btn:hover {
+            background: #009688;
+            color: white;
+        }
+    </style>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Thanh trên cùng -->
+    <div class="top-bar">
+        <div>DỪA - BIỂU TƯỢNG TỈNH BẾN TRE</div>
+        <div class="social-links">
+            <span>Tìm hiểu thêm</span>
+            <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/watch?v=1vUJ6PdBg-Q" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Phần header -->
+    <div class="header">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <!--Nút menu-->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar">
+            <button class="close-btn">&times;</button>
+            <ul>
+                <li><a href="index.html">TRANG CHỦ</a></li>
+                <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+                <li><a href="vaitro.html">ỨNG DỤNG</a></li>
+                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+            </ul>
+            <div class="social-links">
+                <span>Tìm hiểu thêm</span>
+                <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1vUJ6PdBg-Q" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <!---->
+        <nav>
+            <ul>
+                <li><a href="index.html">TRANG CHỦ</a></li>
+                <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+                <li><a href="vaitro.html">ỨNG DỤNG</a></li>
+                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!--Nội dung chính-->
+    <!--Thực phẩm-->
+    <div class="section food">
+        <h2>1. Thực phẩm</h2>
+        <ul style="text-shadow: 1px 1px 10px black;">
+            <li><strong>Nước dừa:</strong> Nước dừa tươi mát, giàu chất điện giải, là thức uống giải khát tuyệt vời.</li>
+            <li><strong>Thịt dừa:</strong> Thịt dừa có thể ăn tươi, sấy khô, hoặc chế biến thành các món ăn như: cơm dừa, bánh kẹo, kem...</li>
+            <li><strong>Nước cốt dừa:</strong> Nước cốt dừa là thành phần không thể thiếu trong nhiều món ăn Á Đông, đặc biệt là các món cà ri, chè.</li>
+        </ul>
+        <button class="toggle-btn" onclick="toggleInfo('food-info')" data-action="buy">Mua hàng</button>
+        <div id="food-info" class="info-box">
+            <div class="product-slider">
+                <button class="prev-btn" onclick="changeProduct(-1)">&#10094;</button>
+                <div class="product-content">
+
+                    <div class="product-item active">
+                        <a href="https://vinut.store/khay-24-lon-nuoc-dua-co-thit-vinut-325ml-p35591942.html?srsltid=AfmBOorsTpaGbO8JsUkuSeC6nxyRJGN6Dtb315arVhZoNwM407tyRtNWSIw"> 
+                            <img src="images/nuocdua.png" alt="Sản phẩm 1">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Nước dừa Vinut</span>
+                            <p>Mang đến hương vị tươi mát từ nước dừa tự nhiên kết hợp với cơm dừa dai giòn.</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://www.bachhoaxanh.com/kem/kem-dua-vinamilk-min-hop-220g"> 
+                            <img src="images/kemdua.png" alt="Sản phẩm 2">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Kem dừa Vinamilk</span>
+                            <p>Chế biến từ dừa tự nhiên thanh mát, giúp tận hưởng nguồn năng lượng tuyệt vời.</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://thucphamhahien.com/products/nuoc-cot-dua-tuoi-cocoxim-400ml?srsltid=AfmBOorc85f6y5AZHGhXMtAIvbIclNp8Jx7B9yo0Zw3fe76qjZca3UQ4jfg"> 
+                            <img src="images/nuoccotdua.png" alt="Sản phẩm 3">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Nước cốt dừa tươi Coco</span>
+                            <p>Làm từ dừa tươi nguyên chất, mang hương vị béo ngậy, thơm ngon tự nhiên.</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://dua.vn/san-pham/nuoc-uong-mat-hoa-dua-tuoi/"> 
+                            <img src="images/nuocmathoadua.png" alt="Sản phẩm 4">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Nước uống Mật Hoa Dừa Tươi</span>
+                            <p>Được chiết từ hoa dừa tự nhiên, có vị ngọt dịu, không gắt, có chỉ số đường huyết thấp.</p>
+                        </a>
+                    </div>                    
+
+                </div>
+
+                <button class="next-btn" onclick="changeProduct(1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
+    <!--Mỹ phẩm-->
+    <div class="section cosmetic">
+        <h2>2. Mỹ phẩm</h2>
+        <ul style="text-shadow: 1px 1px 10px black;">
+            <li><strong>Dầu dừa:</strong> Dầu dừa có tác dụng dưỡng ẩm, làm mềm da và tóc.</li>
+            <li><strong>Sữa dừa:</strong> Sữa dừa được sử dụng để làm sữa tắm, kem dưỡng da.</li>
+        </ul>
+        <button class="toggle-btn" onclick="toggleInfo('cosmetic-info')" data-action="buy">Mua hàng</button>
+        <div id="cosmetic-info" class="info-box">
+            <div class="product-slider">
+                <button class="prev-btn" onclick="changeProduct(-1)">&#10094;</button>
+                <div class="product-content">
+
+                    <div class="product-item active">
+                        <a href="https://csfood.vn/cuahang/gia-vi/dau-an/dau-dua-xuan-nguyen-chai-180ml/?srsltid=AfmBOor1mxkFwNgHElzcAMmEh3VcJtlxBajzUhs0ZJPo7HdQ3C5GVyRn67c"> 
+                            <img src="images/daudua.png" alt="Sản phẩm 1">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Dầu dừa Xuân Nguyên</span>
+                            <p>Dưỡng da, dưỡng tóc, trị rạn da; điều trị vết thương vết thương bỏng trên da; kháng khuẩn, kháng nấm, bảo vệ da</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://sanphamhuucothiennhien.vn/sua-tam-tinh-dau-thien-nhien-vanilla-dua"> 
+                            <img src="images/suatamdua.png" alt="Sản phẩm 2">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Sữa tắm Vanilla dừa</span>
+                            <p>Chiết xuất dầu dừa và quả vanilla kết hợp với nhiều loại thảo mộc, hoa cỏ, được bổ sung tinh dầu thiên nhiên.</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://cocoonvietnam.com/san-pham/son-duong-dau-dua-ben-tre-5g"> 
+                            <img src="images/sonduongmoi.png" alt="Sản phẩm 3">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Son dưỡng môi Cocoon</span>
+                            <p>Giúp đôi môi mềm mượt, căng mọng, chống khô môi, nứt nẻ do thời tiết.</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://hasaki.vn/san-pham/mascara-duong-mi-milaganics-dau-dua-nguyen-chat-5ml-16898.html"> 
+                            <img src="images/sonduongmi.png" alt="Sản phẩm 4">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Mascara Dưỡng Mi Milaganics</span>
+                            <p>Thành phần dầu dừa nguyên chất 100% được sản xuất theo phương pháp ép lạnh cùng thiết kế đặc biệt dành riêng cho mi sẽ mang đến cho bạn bờ mi dài và dày, thu hút mọi ánh nhìn.</p>
+                        </a>
+                    </div>                    
+
+                </div>
+                <button class="next-btn" onclick="changeProduct(1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
+    <!--Vật liệu-->
+    <div class="section material">
+        <h2>3. Vật liệu</h2>
+        <ul style="text-shadow: 1px 1px 10px black;">
+            <li><strong>Xơ dừa:</strong> Xơ dừa được sử dụng để làm chổi, thảm, vật liệu xây dựng.</li>
+            <li><strong>Vỏ dừa:</strong> Vỏ dừa có thể được chế tác thành các sản phẩm thủ công mỹ nghệ.</li>
+        </ul>
+        <button class="toggle-btn" onclick="toggleInfo('material-info')" data-action="buy">Mua hàng</button>
+        <div id="material-info" class="info-box">
+            <div class="product-slider">
+                <button class="prev-btn" onclick="changeProduct(-1)">&#10094;</button>
+                <div class="product-content">
+
+                    <div class="product-item active">
+                        <a href="https://cocohand.com/cocohand/tranh-dua/tranh-dua-khung-20x25cm-viet-nam-va-bac-ho.html"> 
+                            <img src="images/tranhdua.png" alt="Sản phẩm 1">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Tranh dừa Việt Nam và Bác Hồ</span>
+                            <p>Được dùng nguyên liệu chính từ giấy dừa, sản phẩm thân thiện với môi trường.</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://cocohand.com/cocohand/tui-xo-dua/tui-xo-dua.html"> 
+                            <img src="images/tuixodua.png" alt="Sản phẩm 2">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Túi xơ dừa không lót vải</span>
+                            <p>Được làm từ xơ dừa tự nhiên – phụ phẩm ngành chế biến dừa, dễ tái chế và phân hủy, góp phần giảm ô nhiễm nhựa.</p>
+                        </a>
+                    </div>
+
+                    <div class="product-item">
+                        <a href="https://cocohand.com/cocohand/moc-khoa-dua/moc-khoa-dua-thiet-ke-theo-yeu-cau.html"> 
+                            <img src="images/mockhoadua.png" alt="Sản phẩm 3">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Móc khóa dừa thiết kế theo yêu cầu</span>
+                            <p>Được làm từ gáo dừa trắng; dùng làm quà tặng cá nhân, bạn bè người thân, hoặc làm quà tặng đơn vị, cơ quan, ...</p>
+                        </a>
+                    </div>                                          
+
+                    <div class="product-item">
+                        <a href="http://mynghegiasi.com/san-pham/bo-binh-tra-dia-hoa.html"> 
+                            <img src="images/bobinhtra.png" alt="Sản phẩm 4">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Bộ bình trà đĩa hoa</span>
+                            <p>Có màu sắc và vân gỗ dừa tự nhiên của thân cây dừa lâu năm. Chất liệu gỗ dừa có độ bền cao, chịu nhiệt, chống thấm, chịu nước, ít bị trầy xước, đặc biệt càng bóng sáng theo thời gian sử dụng.</p>
+                        </a>
+                    </div>  
+
+                    <div class="product-item">
+                        <a href="https://dua.vn/san-pham/tham-so-dua-xuong-san-xuat-tai-ben-tre/"> 
+                            <img src="images/thamxodua.png" alt="Sản phẩm 5">
+                            <span class="product-name" style="text-shadow: 1px 1px 10px black;">Thảm sơ dừa</span>
+                            <p>Nhờ vào đặc tính chống trượt và khả năng chịu mài mòn cao, thảm xơ dừa giúp bảo vệ đôi chân của người đi bộ và đồng thời giữ cho bề mặt đi bộ luôn an toàn; Ngoài ra có thể dùng giữ ẩm cho đất, thay thế cho rơm rạ ...</p>
+                        </a>
+                    </div>
+
+                </div>
+                <button class="next-btn" onclick="changeProduct(1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
+    <!-- Y học -->
+    <div class="section medicine">
+        <h2>4. Y học</h2>
+        <ul style="text-shadow: 1px 1px 10px black;">
+            <li><strong>Dầu dừa:</strong> Có tác dụng kháng khuẩn, chống viêm.</li>
+            <li><strong>Nước dừa:</strong> Hỗ trợ bù nước, cung cấp điện giải.</li>
+        </ul>
+        <button class="toggle-btn" onclick="toggleInfo('medicine-info')" data-action="view-more">Xem thêm</button>
+        <div id="medicine-info" class="info-box">
+            <div class="info-content">
+                <video src="videos/yhoc.mp4" controls></video>
+                <div class="text-content">
+                    <h3 style="text-align: center; color: white;">Lợi ích không ngờ khi bạn uống nước dừa mỗi ngày</h3>
+                    <p>Khi nói về dinh dưỡng của quả dừa, chuyên gia dinh dưỡng Lauren Richer đến từ Canada đã cho rằng: "Nước dừa là một món quà mà Thượng đế đã ban tặng cho con người. Một quả dừa, từ phần cùi cho đến phần nước đều tốt cho sức khỏe".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Môi trường-->
+    <div class="section environment">
+        <h2>5. Môi trường</h2>
+        <ul style="text-shadow: 1px 1px 10px black;">
+            <li><strong>Than dừa:</strong> Than dừa được sử dụng làm nhiên liệu sạch.</li>
+            <li><strong>Xơ dừa:</strong> Xơ dừa có khả năng hấp thụ nước và chất ô nhiễm, được sử dụng để xử lý nước thải.</li>
+        </ul>
+        <button class="toggle-btn" onclick="toggleInfo('environment-info')" data-action="view-more">Xem thêm</button>
+        <div id="environment-info" class="info-box">
+            <div class="info-content">
+                <video src="videos/thandua.mp4" controls></video>
+                <div class="text-content">
+                    <h3 style="text-align: center; color: white;">Sản xuất than gáo dừa lọc nước thương hiệu HACHIKO</h3>
+                    <p>Than hoạt tính lọc nước gáo dừa Bến Tre là một giải pháp hiệu quả và thân thiện với môi trường để cải thiện chất lượng nước. Được sản xuất từ gáo dừa tại Việt Nam, than hoạt tính HACHIKO có khả năng hấp phụ cao, loại bỏ hóa chất độc hại, vi khuẩn gây bệnh và các chất cặn có trong nước và khí thải.</p>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Copyright 2025 &copy; Dừa – Biểu tượng tỉnh Bến Tre.</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Nút chia sẻ -->
+<button id="shareButton"><i class="fas fa-share"></i></button>
+<!-- Hộp chia sẻ -->
+<div id="shareBox" class="hidden">
+    <p>Sao chép hoặc chia sẻ link:</p>
+    <input type="text" id="shareLink" readonly>
+    <button id="copyLink"><i class="fas fa-copy"></i> Sao chép</button>
+    <a id="shareFacebook" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a id="shareMessenger" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+    <a id="shareZalo" target="_blank"><img src="images/zalo.png" alt="Zalo" width="20" height="20"> Zalo</a>
+    <button id="closeShareBox">x</button>
+</div>
+
+<button id="scrollToTop">^</button>
+<script src="script.js"></script>
+</body>
+</html>

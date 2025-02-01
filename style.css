@@ -1,0 +1,407 @@
+/* Giữ nguyên cho body và container */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #f3f3f3;
+}
+
+/* Giữ nguyên hình thức ban đầu của top bar */
+.top-bar {
+    background-color: #663300;
+    height: 20px;
+    color: white;
+    padding: 5px 6px;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.top-bar .social-links {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+
+}
+.top-bar .social-links span {
+    font-weight: normal;
+    margin-right: 5px;
+}
+.top-bar .social-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.top-bar .social-links a:hover {
+    color: #009688;
+}
+
+/* Giữ nguyên cho header, logo và menu điều hướng */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    height: 80px;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.header .logo {
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng cuộn header*/
+.header.fixed {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px 30px; 
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.header.fixed .logo {
+    width: 120px; 
+    height: 70px;  
+}
+
+
+/* Nút menu */
+.menu-toggle, .sidebar, .sidebar ul, .sidebar .close-btn  {
+    display: none;
+}
+
+nav {
+    padding-right: 50px;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+nav ul li {
+    padding: 12px 20px;
+    position: relative;
+}
+/* Hiệu ứng hover cho các nút menu */
+nav ul li a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+nav ul li a:hover {
+    color: #009688;
+    text-decoration: underline;
+}
+
+
+/* Nút chia sẻ */
+#shareButton {
+    position: fixed;
+    bottom: 70px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+/* Hộp chia sẻ */
+#shareBox {
+    position: fixed;
+    bottom: 120px;
+    right: 15px;
+    width: 300px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+#shareBox.hidden {
+    display: none;
+}
+#shareBox input {
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+#shareBox button, #shareBox a {
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+#copyLink {
+    background-color: #28a745;
+    color: white;
+}
+#shareFacebook {
+    background-color: #1877f2;
+    color: white;
+}
+#shareMessenger {
+    background-color: #0099ff;
+    color: white;
+}
+#shareZalo {
+    background-color: #0088ff;
+    color: white;
+}
+#closeShareBox {
+    background-color: white;
+    color: black;
+}
+/*hover*/
+#shareButton:hover {
+    background-color: #663300;
+    color: white;
+    border: 2px solid #663300;
+}
+#copyLink:hover {
+    background-color: #218838;
+}
+#shareFacebook:hover {
+    background-color: #0f66d0;
+}
+#shareMessenger:hover {
+    background-color: #0080d4;
+}
+#shareZalo:hover {
+    background-color: #0077e6;
+}
+
+
+/* Điều chỉnh cho màn hình nhỏ hơn 768px (tablet và điện thoại) */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    #shareBox {
+        width: 250px;
+    }
+    .top-bar .social-links {
+        display: none;
+    }
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+    .header .logo {
+        width: 100px;
+        height: 90px;
+        padding-right: 25px;
+    }
+    .header.fixed .logo {
+        padding-right: 60px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        display: none; /* Ẩn menu khi chưa mở */
+    }
+
+    nav.active ul {
+        display: flex; /* Hiển thị menu khi cần */
+    }
+
+    nav ul li {
+        padding: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .background {
+        height: 300px;
+        font-size: 30px;
+    }
+
+    /* Nút menu */
+    .menu-toggle {
+        display: block; /* Hiển thị nút menu trên màn hình nhỏ */
+        background-color: transparent;
+        color: black;
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 20px;
+        cursor: pointer;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    /* Hiệu ứng khi rê chuột vào biểu tượng menu */
+    .menu-toggle:hover {
+        background-color: #663300; 
+        color: white; 
+        border-color: #663300; 
+    }
+
+    .sidebar {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -1000px; /* Ẩn khung menu ban đầu */
+        width: 180px;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: black;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: left 0.3s ease;
+        z-index: 1000;
+        padding: 20px;
+    }
+    .sidebar.active {
+        left: 0; /* Hiển thị khung menu khi mở */
+    }
+    .sidebar .close-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 24px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .sidebar ul {
+        display: block;
+        list-style: none;
+        padding: 0;
+    }
+    .sidebar ul li {
+        text-align: left;
+        margin: 30px 0;
+    }
+    .sidebar ul li a {
+        color: rgba(0, 0, 0, 0.6);
+        text-decoration: none;
+        font-size: 15px;
+        display: block;
+        transition: color 0.3s ease;
+    }
+    .sidebar ul li a:hover {
+        color: #009688;
+        text-decoration: underline;
+    }
+    .sidebar .social-links {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+
+    }
+    .sidebar .social-links span {
+        font-weight: normal;
+        color: rgba(0, 0, 0, 0.6);
+        margin-right: 5px;
+    }
+    .sidebar .social-links a {
+        color: rgba(0, 0, 0, 0.6);
+        text-decoration: none;
+        margin-left: 10px;
+        font-size: 15px;
+    }
+    .sidebar .social-links a:hover {
+        color: #009688;
+    }
+}
+
+/* footer */
+footer {
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    padding: 1px;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+
+
+
+
+/* scrollToTop */
+#scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 42px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 100;
+}
+#scrollToTop:hover {
+    background-color: #663300;
+    color: white;
+    border: 2px solid #663300;
+}
+

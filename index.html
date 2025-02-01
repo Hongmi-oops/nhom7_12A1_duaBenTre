@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dừa Bến Tre</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .background {
+            background-image: url('images/bt.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            background-attachment: fixed;
+            text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 10px;
+            background-color: white;
+            justify-content: center;
+        }
+        .products a {
+            text-decoration: none ; /* Bỏ gạch dưới mặc định của thẻ <a> */
+            color: inherit; /* Đảm bảo màu sắc không thay đổi khi hover */
+        }
+        .products .product {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 50px;
+            display: flex; 
+            align-items: center;  
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .products .product:first-child {
+            text-align: left;
+            justify-content: flex-start;
+            padding-left:2px;
+            padding-right: 20px;
+        }
+        .products .product:last-child {
+            text-align: right;
+            justify-content: flex-end;
+            padding-right: 2px;
+            padding-left: 20px;
+        }
+        .products .product img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; 
+            object-fit: cover;
+            margin: 0 20px; 
+            flex-shrink: 0; 
+        }
+        .products .product h3 {
+            font-size: 18px;
+            margin: 0;
+            color: black;
+        }
+        .products .product p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0 0;
+        }
+
+        .khung1 {
+            background-color: #663300;
+            color: white;
+        }
+        .khung1, .khung2 {
+            display: flex;
+            flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi cần */
+            align-items: center;
+            padding: 30px;
+            gap: 30px; /*khoảng cách giữa các phần tử */
+        }
+        .khung1 .image-content img, .khung2 .video-content iframe {
+            width: 100%; /* Đảm bảo hình ảnh/video chiếm toàn bộ chiều rộng khi màn hình nhỏ */
+            width: 400px; /* Giới hạn kích thước tối đa */
+            height: 250px;
+            margin: 0 auto; /* Căn giữa */
+        }
+        .khung1 .image-content img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .khung1 .text-content, .khung2 .text-content2 {
+            flex: 1; /* Cho phép văn bản chiếm không gian còn lại */
+            text-align: justify;
+            font-size: 18px;
+        }
+        .khung1 .image-content img:hover {
+            transform: translateY(-10px);  
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            .khung1, .khung2 {
+                flex-direction: column; /* Hiển thị các phần tử theo cột trên màn hình nhỏ */
+            }
+            .khung1 .text-content, .khung2 .text-content2 {
+                text-align: justify;
+            }
+            .khung1 .image-content img, .khung2 .video-content iframe {
+                max-width: 100%; /* Đảm bảo hình ảnh/video co giãn linh hoạt */
+            }
+        }
+
+    </style>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Thanh trên cùng -->
+    <div class="top-bar">
+        <div>DỪA - BIỂU TƯỢNG TỈNH BẾN TRE</div>
+        <div class="social-links">
+            <span>Tìm hiểu thêm</span>
+            <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/watch?v=1vUJ6PdBg-Q" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Phần header -->
+    <div class="header">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <!--Nút menu-->
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="sidebar">
+            <button class="close-btn">&times;</button>
+            <ul>
+            <li><a href="index.html">TRANG CHỦ</a></li>
+            <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+            <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+            <li><a href="vaitro.html">ỨNG DỤNG</a></li>
+            <li><a href="lienhe.html">LIÊN HỆ</a></li>
+            </ul>
+            <div class="social-links">
+                <span>Tìm hiểu thêm</span>
+                <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1vUJ6PdBg-Q" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <!---->
+        <nav>
+            <ul>
+                <li><a href="index.html">TRANG CHỦ</a></li>
+                <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+                <li><a href="vaitro.html">ỨNG DỤNG</a></li>
+                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Phần nền -->
+    <div class="background">
+        <div style="text-align: center;">
+            <div>Chào mừng đến với Dừa</div>
+            <div style="font-size: 25px; font-weight: normal;">Biểu tượng văn hóa và kinh tế của tỉnh Bến Tre</div>
+        </div>
+    </div>
+
+    <!-- Danh sách sản phẩm -->
+    <section class="products">
+        <div class="product">
+            <img src="images/duaxiemxanh.png">
+            <div>
+                <h3>Dừa xiêm xanh</h3>
+                <p>Trái nhỏ, vỏ mỏng, nước ngọt thanh tự nhiên.</p>
+            </div>
+        </div>
+        <div class="product">
+            <div>
+                <h3>Dừa xiêm đỏ</h3>
+                <p>Vỏ trái màu đỏ cam nổi bật, nước ngọt đậm hơn xiêm xanh.</p>
+            </div>
+            <img src="images/duaxiemdo.png">
+        </div>
+    </section>
+    <section class="products">
+        <div class="product">
+            <img src="images/cosmetic.jpg">
+            <div>
+                <h3>Lịch sử và phát triển</h3>
+                <p>Được trồng ở Bến Tre từ khi bắt đầu khai hoang, lập làng. </p>
+            </div>
+        </div>
+        <div class="product">
+            <div>
+                <h3>Ứng dụng</h3>
+                <p>Thực phẩm, mỹ phẩm, vật liệu, y học, ...</p>
+            </div>
+            <img src="images/food.jpg">
+        </div>
+    </section>
+    <div class="khung1">
+        <div class="image-content">
+            <img src="images/bt1.jpg" alt="Dừa">
+        </div>
+        <div class="text-content">
+            <p style="text-align: center; font-size: 22px; font-weight: bold;">Bến Tre - Vùng đất của Dừa</p>
+            <p>Dừa là biểu tượng văn hóa đặc sắc, gắn bó mật thiết với đời sống và con người Bến Tre. Cây dừa không chỉ làm đẹp cảnh quan quê hương mà còn xuất hiện trong các lễ hội, phong tục và nghệ thuật truyền thống, thể hiện tinh thần bền bỉ và giản dị của người dân. Đồng thời, dừa là nguồn kinh tế chủ lực, với các sản phẩm nổi tiếng như kẹo dừa, dầu dừa và hàng thủ công mỹ nghệ, góp phần nâng tầm thương hiệu Bến Tre ra thị trường quốc tế, thúc đẩy sự phát triển bền vững cho địa phương.</p>
+        </div>       
+    </div>
+    <div class="khung2">
+        <div class="text-content2">
+            <p style="text-align: center; font-size: 22px; font-weight: bold;">Xứ dừa tại sao lại đặt tên là Bến Tre?</p>
+            <p>Lý giải được tin tưởng nhất là giải thích của ông Vương Hồng Sển: “Bến Tre là sự gán ghép giữa tiếng Khmer và tiếng Việt. Xưa kia người Khmer gọi nơi đó là Srok Treay - Srok là xứ, Treay là cá. Sau người Việt đến khai phá sinh sống, biến chữ Srok thành Bến nhưng chữ Treay không dịch là cá mà phát âm theo tiếng Khmer thành Tre. Quả tình nơi đó không có tre mà thật nhiều tôm cá.”</p>
+        </div>
+        <div class="video-content">
+            <iframe 
+                width="500" 
+                height="350" 
+                src="https://www.youtube.com/embed/MMXMvcVpuuY?enablejsapi=1" 
+                frameborder="0" 
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+
+        </div>      
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Copyright 2025 &copy; Dừa – Biểu tượng tỉnh Bến Tre.</p>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Nút chia sẻ -->
+<button id="shareButton"><i class="fas fa-share"></i></button>
+<!-- Hộp chia sẻ -->
+<div id="shareBox" class="hidden">
+    <p>Sao chép hoặc chia sẻ link:</p>
+    <input type="text" id="shareLink" readonly>
+    <button id="copyLink"><i class="fas fa-copy"></i> Sao chép</button>
+    <a id="shareFacebook" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a id="shareMessenger" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+    <a id="shareZalo" target="_blank"><img src="images/zalo-icon.png" alt="Zalo"> Zalo</a>
+    <button id="closeShareBox">x</button>
+</div>
+
+<button id="scrollToTop">^</button>
+<script src="script.js"></script>
+</body>
+</html>

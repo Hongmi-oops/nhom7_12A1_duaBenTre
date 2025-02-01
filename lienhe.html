@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        iframe {
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .bang {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .bang img {
+            width: 150px;
+            height: 100px;
+            object-fit: contain;
+        }
+        .bang th {
+            padding-top: 15px;
+            font-size: 20px;
+            text-align: center;       
+        }
+        .bang td {
+            font-size: 18px;
+            text-align: left;
+        }
+        .bang td, th {
+            padding: 5px; 
+            color: white;      
+            border: none;
+        }
+        .bang a {
+            text-decoration: none;
+            color: white;
+            padding-right: 10px;
+        }
+        .bang a:hover {
+            color: #009688;
+        }
+    </style>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Thanh trên cùng -->
+    <div class="top-bar">
+        <div>DỪA - BIỂU TƯỢNG TỈNH BẾN TRE</div>
+        <div class="social-links">
+            <span>Tìm hiểu thêm</span>
+            <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/watch?v=1vUJ6PdBg-Q" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </div>
+
+
+
+    <!--Liên hệ-->
+    <iframe src="https://forms.gle/Lo863o3bxrpUaHS37" width="100%" height="1550" frameborder="0" marginheight="0" marginwidth="0">Đang tải...</iframe>
+
+    <!-- Footer -->
+    <table class="bang" style="border: 1">
+        <tr>
+            <th rowspan="5" style="width: 33,33%">
+                <img src="images/logo.png">
+            </th>
+            <th style="width: 33,33%">THÀNH VIÊN</th>
+            <th style="width: 33,33%">DANH MỤC</th>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://www.facebook.com/people/Nguy%C3%AAn-Thanh/100066822518958/" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                Nguyễn Thị Kim Anh
+            </td>
+            <td><a href="index.html">TRANG CHỦ</a></td>
+        </tr> 
+        <tr>
+            <td>
+                <a href="https://www.facebook.com/betrimexvietnam" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                Hồ Chí Dũng
+            </td>
+            <td><a href="gioithieu.html">GIỚI THIỆU</a></td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://www.facebook.com/n.phihungg" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                Nguyễn Phi Hùng
+            </td>
+            <td><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://www.facebook.com" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                Phan Thị Hồng Mi
+            </td>
+            <td><a href="vaitro.html">ỨNG DỤNG</a></td>
+        </tr>
+    </table>
+    <footer>
+        <div class="footer-content">
+            <p>Copyright 2025 &copy; Dừa – Biểu tượng tỉnh Bến Tre.</p>
+        </div>
+    </footer>
+</div>
+<button id="scrollToTop">^</button>
+<script src="script.js">
+    document.addEventListener("DOMContentLoaded", function () {
+        let iframe = document.querySelector("iframe");
+        let timeout = setTimeout(function () {
+            if (!iframe.contentWindow || iframe.contentWindow.length === 0) {
+                alert("Vui lòng tải lại trang khi không thấy mẫu liên hệ!");
+            }
+        }, 5000); // 5 giây
+    });
+</script>
+</body>
+</html>
