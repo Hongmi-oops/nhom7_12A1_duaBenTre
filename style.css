@@ -191,15 +191,34 @@ nav ul li a:hover {
     background-color: #28a745;
     color: white;
 }
+#qrContainer {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+#qrContainer.hidden {
+    display: none;
+}
+#qrCode {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background: white;
+}
+#generateQR {
+    background-color: #8055B8;
+    color: white;
+}
 #shareFacebook {
     background-color: #1877f2;
     color: white;
 }
-#shareMessenger {
+#shareTwitter {
     background-color: #0099ff;
     color: white;
 }
-#shareZalo {
+#shareEmail {
     background-color: #0088ff;
     color: white;
 }
@@ -216,13 +235,16 @@ nav ul li a:hover {
 #copyLink:hover {
     background-color: #218838;
 }
+#generateQR:hover {
+    background-color: #6A3DA0;
+}
 #shareFacebook:hover {
     background-color: #0f66d0;
 }
-#shareMessenger:hover {
+#shareTwitter:hover {
     background-color: #0080d4;
 }
-#shareZalo:hover {
+#shareEmail:hover {
     background-color: #0077e6;
 }
 

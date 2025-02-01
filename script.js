@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//Nút chia sẻ
 document.addEventListener("DOMContentLoaded", function () {
     const shareButton = document.getElementById("shareButton");
     const shareBox = document.getElementById("shareBox");
@@ -59,44 +60,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const shareLink = document.getElementById("shareLink");
     const copyLink = document.getElementById("copyLink");
     const shareFacebook = document.getElementById("shareFacebook");
-    const shareMessenger = document.getElementById("shareMessenger");
-    const shareZalo = document.getElementById("shareZalo");
+    const shareTwitter = document.getElementById("shareTwitter");
+    const shareEmail = document.getElementById("shareEmail");
+    const generateQR = document.getElementById("generateQR");
+    const qrContainer = document.getElementById("qrContainer");
+    const qrCodeImg = document.getElementById("qrCode");
 
     const currentUrl = window.location.href;
 
-    // Kiểm tra nếu các phần tử tồn tại trong DOM
-    if (shareMessenger && shareZalo && currentUrl) {
-        // Chia sẻ Facebook
+    if (shareTwitter && shareEmail && currentUrl) {
         shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
-
-        // Chia sẻ Messenger
-        shareMessenger.href = `https://www.messenger.com/share?link=${encodeURIComponent(currentUrl)}`;
-
-        // Chia sẻ Zalo
-        shareZalo.href = `https://zalo.me/share?url=${encodeURIComponent(currentUrl)}`;
+        shareTwitter.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}`;
+        shareEmail.href = `mailto:?subject=Check%20this%20out&body=${encodeURIComponent(currentUrl)}`;
     }
 
-    // Hiển thị hộp chia sẻ khi nhấn vào nút chia sẻ
     shareButton.addEventListener("click", function (event) {
-        event.stopPropagation();   // Ngăn chặn sự kiện lan ra document
+        event.stopPropagation();
         shareBox.classList.toggle("hidden");
-        shareLink.value = currentUrl; // Lấy URL hiện tại
+        shareLink.value = currentUrl;
     });
 
-    // Đóng hộp chia sẻ khi nhấn vào nút đóng
     closeShareBox.addEventListener("click", function (event) {
         event.stopPropagation();
         shareBox.classList.add("hidden");
     });
 
-    // Đóng hộp chia sẻ khi nhấn ra ngoài
     document.addEventListener("click", function (event) {
         if (!shareBox.contains(event.target) && !shareButton.contains(event.target)) {
             shareBox.classList.add("hidden");
         }
     });
 
-    // Sao chép link vào clipboard
     copyLink.addEventListener("click", function (event) {
         try {
             shareLink.select();
@@ -105,6 +99,12 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (err) {
             alert("Lỗi khi sao chép link.");
         }
+    });
+
+    generateQR.addEventListener("click", function () {
+        const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(currentUrl)}`;
+        qrCodeImg.src = qrApi;
+        qrContainer.classList.toggle("hidden");
     });
 });
 
