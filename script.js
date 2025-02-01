@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//nút chia sẻ//
 document.addEventListener("DOMContentLoaded", function () {
     const shareButton = document.getElementById("shareButton");
     const shareBox = document.getElementById("shareBox");
@@ -63,11 +62,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const shareMessenger = document.getElementById("shareMessenger");
     const shareZalo = document.getElementById("shareZalo");
 
+    const currentUrl = window.location.href;
+
+    // Kiểm tra nếu các phần tử tồn tại trong DOM
+    if (shareMessenger && shareZalo && currentUrl) {
+        // Chia sẻ Facebook
+        shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+
+        // Chia sẻ Messenger
+        shareMessenger.href = `https://www.messenger.com/share?link=${encodeURIComponent(currentUrl)}`;
+
+        // Chia sẻ Zalo
+        shareZalo.href = `https://zalo.me/share?url=${encodeURIComponent(currentUrl)}`;
+    }
+
     // Hiển thị hộp chia sẻ khi nhấn vào nút chia sẻ
     shareButton.addEventListener("click", function (event) {
         event.stopPropagation();   // Ngăn chặn sự kiện lan ra document
         shareBox.classList.toggle("hidden");
-        shareLink.value = window.location.href; // Lấy URL hiện tại
+        shareLink.value = currentUrl; // Lấy URL hiện tại
     });
 
     // Đóng hộp chia sẻ khi nhấn vào nút đóng
@@ -85,19 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sao chép link vào clipboard
     copyLink.addEventListener("click", function (event) {
-        shareLink.select();
-        document.execCommand("copy");
-        alert("Đã sao chép link!");
+        try {
+            shareLink.select();
+            document.execCommand("copy");
+            alert("Đã sao chép link!");
+        } catch (err) {
+            alert("Lỗi khi sao chép link.");
+        }
     });
-
-    // Chia sẻ Facebook
-    shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
-
-    // Chia sẻ Messenger
-    shareMessenger.href = `https://www.messenger.com/share?link=${encodeURIComponent(window.location.href)}`;
-
-    // Chia sẻ Zalo
-    shareZalo.href = `https://zalo.me/share?url=${encodeURIComponent(window.location.href)}`;
 });
 
 
