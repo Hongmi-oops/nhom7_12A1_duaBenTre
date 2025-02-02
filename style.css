@@ -292,11 +292,6 @@ nav ul li a:hover {
         font-size: 14px;
     }
 
-    .background {
-        height: 300px;
-        font-size: 30px;
-    }
-
     /* Nút menu */
     .menu-toggle {
         display: block; /* Hiển thị nút menu trên màn hình nhỏ */

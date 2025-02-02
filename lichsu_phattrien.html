@@ -6,8 +6,112 @@
     <title>Lịch sử và Phát triển</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-
-
+        .background {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6),  rgba(0, 0, 0, 0.6)), url('images/lichsuphattrien.jpeg') center/cover no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            background-attachment: fixed;
+            text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.9);
+        }
+        
+        .khung2, .khung4 {
+            background-color: #663300;
+            color: white;
+        }
+        .khung1, .khung2, .khung3, .khung4 {
+            display: flex;
+            flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi cần */
+            align-items: center;
+            padding: 30px;
+            gap: 30px; /*khoảng cách giữa các phần tử */
+        }
+        .khung4 .image-content img {
+            width: 100%; /* Đảm bảo hình ảnh/video chiếm toàn bộ chiều rộng khi màn hình nhỏ */
+            width: 400px; /* Giới hạn kích thước tối đa */
+            height: 250px;
+            margin: 0 auto; /* Căn giữa */
+        }
+        .khung4 .image-content img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .khung1 .text-content {
+            font-size: 25px; 
+            text-align: center;
+            padding-left: 25px; 
+            padding-right: 25px;
+        } 
+        .khung2 .text-content, 
+        .khung3 .text-content, 
+        .khung4 .text-content {
+            flex: 1; /* Cho phép văn bản chiếm không gian còn lại */
+            text-align: justify;
+            font-size: 20px;
+        } 
+        .khung2 .text-content h2, 
+        .khung3 .text-content h2, 
+        .khung4 .text-content h2 {
+            text-align: left;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px; /* Khoảng cách giữa chữ và gạch chân */
+        }
+        .khung2 .text-content p, 
+        .khung3 .text-content p {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        .khung2 .text-content h2::after, 
+        .khung3 .text-content h2::after,
+        .khung4 .text-content h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* Độ dày của gạch chân */
+        } 
+        .khung3 .text-content h2::after {
+            background-color: black; /* Màu gạch chân, có thể thay đổi */
+        }
+        .khung2 .text-content h2::after, 
+        .khung4 .text-content h2::after {
+            background-color: white; /* Màu gạch chân, có thể thay đổi */
+        }
+        .khung4 .image-content img:hover {
+            transform: translateY(-10px);  
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            .background {
+                height: 150px;
+                font-size: 30px;
+            }
+            .khung1, .khung2, .khung3, .khung4 {
+                flex-direction: column; /* Hiển thị các phần tử theo cột trên màn hình nhỏ */
+            }
+            .khung1 .text-content, 
+            .khung2 .text-content,
+            .khung3 .text-content,
+            .khung4 .text-content {
+                text-align: justify;
+            }
+            .khung2 .text-content p, 
+            .khung3 .text-content p {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            .khung4 .image-content img {
+                max-width: 100%; /* Đảm bảo hình ảnh/video co giãn linh hoạt */
+            }
+        }
     </style>
     <link href="style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -67,8 +171,55 @@
     </div>
 
     <!-- Nội dung chính -->
-
-
+    <!--hình nền-->
+    <div class="background">
+        <div style="text-align: center;">
+            <div>Lịch sử và Phát triển</div>    
+        </div>
+    </div>
+    <!--Đoạn giới thiệu-->
+    <div class="khung1">
+        <div class="text-content">
+            <p>Dừa Bến Tre có lịch sử lâu đời, gắn liền với đời sống và văn hóa người dân địa phương. Nhờ điều kiện thổ nhưỡng và khí hậu thuận lợi, Bến Tre trở thành "thủ phủ dừa" của Việt Nam, với ngành công nghiệp chế biến dừa phát triển mạnh, góp phần quan trọng vào kinh tế và xuất khẩu.</p>
+        </div>       
+    </div>    
+    <!--Nguồn gốc-->
+    <div class="khung2">
+        <div class="text-content">
+            <h2>Nguồn gốc</h2>
+            <p>Có nhiều giả thuyết về nguồn gốc của cây dừa ở Bến Tre. Một số cho rằng cây dừa được đưa vào Bến Tre bởi những người dân từ miền Trung, đặc biệt là tỉnh Bình Định, vốn nổi tiếng với dừa. Một giả thuyết khác lại cho rằng trái dừa có thể đã trôi dạt từ các nước láng giềng như Philippines, Indonesia đến bờ biển Bến Tre và nảy mầm. </p>
+        </div>       
+    </div>
+    <!--Thời điểm hình thành-->
+    <div class="khung3">
+        <div class="text-content">
+            <h2>Thời điểm hình thành</h2>
+            <p>Dựa vào các tài liệu lịch sử, có thể khẳng định rằng cây dừa đã được trồng ở Bến Tre từ rất lâu, có thể từ khi người dân bắt đầu khai hoang, lập làng. Tuy nhiên, cây dừa được trồng nhiều nhất vào đầu thế kỷ 19, sau khi cuộc chiến giữa quân Tây Sơn và Nguyễn Ánh kết thúc. Lúc này, người dân tập trung vào việc ổn định cuộc sống và cây dừa trở thành một phần quan trọng trong đời sống của họ.</p>
+        </div>       
+    </div>
+    <!--Vai trò đối với nền kinh tế Bến Tre-->
+    <div class="khung4" style="padding-bottom: 0;">
+        <div class="text-content">
+            <h2>Vai trò đối với nền kinh tế Bến Tre</h2>
+        </div>
+    </div>
+    <div class="khung4" style="padding-bottom: 0; padding-top: 0;">
+        <div class="image-content">
+            <img src="images/lichsuphattrien2.jpeg">
+        </div>
+        <div class="text-content">
+            <p>- <strong><em>Nguồn thu nhập ổn định cho nông dân:</em></strong> Cây dừa là nguồn thu nhập chính của nhiều hộ nông dân ở Bến Tre. Nhờ đặc tính ra quả quanh năm và không kén đất, cây dừa mang lại sự ổn định cho người nông dân, giúp giảm bớt tình trạng thiếu việc làm và tăng thu nhập cho các hộ gia đình.</p>
+            <p>- <strong><em>Phát triển ngành chế biến dừa:</em></strong> Bến Tre là trung tâm chế biến dừa lớn của Việt Nam, với hàng nghìn cơ sở sản xuất đa dạng sản phẩm như sữa dừa, dầu dừa, bột dừa, nước dừa đóng hộp. Không chỉ đáp ứng nhu cầu trong nước, các sản phẩm này còn được xuất khẩu rộng rãi, góp phần nâng cao giá trị dừa và thúc đẩy sự phát triển kinh tế địa phương.</p>
+        </div>
+    </div>
+    <div class="khung4" style="padding-top: 0;">
+        <div class="text-content">            
+            <p>- <strong><em>Tạo việc làm và phát triển cộng đồng:</em></strong> Ngành chế biến dừa đã tạo ra hàng nghìn công ăn việc làm cho người dân, không chỉ trong sản xuất mà còn ở các lĩnh vực liên quan như vận tải, bao bì và logistics, góp phần giảm thiếu hụt lao động nông thôn.</p>
+            <p>- <strong><em>Tăng trưởng xuất khẩu và đóng góp vào GDP:</em></strong> Sản phẩm dừa chiếm tỷ trọng lớn trong xuất khẩu của Bến Tre, vươn ra các thị trường khó tính như châu Âu, Mỹ, Trung Đông, góp phần thúc đẩy tăng trưởng kinh tế và nâng cao vị thế của tỉnh Bến Tre trên bản đồ xuất khẩu của Việt Nam.</p>
+            <p>- <strong><em>Ứng dụng trong phát triển nông nghiệp bền vững:</em></strong> Cây dừa có khả năng chịu đựng tốt trong các điều kiện khí hậu khắc nghiệt và không kén chọn đất đai, khiến nó trở thành một cây trồng lý tưởng trong bối cảnh biến đổi khí hậu và nước biển dâng cao. Việc trồng dừa cũng giúp giảm tác động xấu của hóa chất trong nông nghiệp, hỗ trợ phát triển nông nghiệp hữu cơ, từ đó giúp bảo vệ môi trường và nâng cao chất lượng sản phẩm.</p>
+            <p style="font-size: 22px;">Với tất cả những lợi thế này, cây dừa không chỉ là tài sản giá trị đối với nông dân mà còn là yếu tố quan trọng thúc đẩy nền kinh tế Bến Tre phát triển mạnh mẽ và bền vững trong tương lai.</p>
+        </div>       
+    </div>
 
     <!-- Footer -->
     <footer>
