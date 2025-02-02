@@ -20,7 +20,22 @@
             background-attachment: fixed;
             text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.9);
         }
-        
+
+        nav ul li a[href="lichsuphattrien.html"] {
+            display: inline-block; /* Giới hạn kích thước theo nội dung */
+            border-bottom: 2px solid black; /* Viền dưới dày hơn */
+            padding-bottom: 0px;
+        }
+        .sidebar ul li a[href="lichsuphattrien.html"] {
+            display: inline-block; /* Giới hạn kích thước theo nội dung */
+            border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+            padding-bottom: 0px; /* Tạo khoảng cách giữa chữ và đường gạch */
+        }
+        nav ul li a[href="lichsuphattrien.html"]:hover,
+        .sidebar ul li a[href="lichsuphattrien.html"]:hover {
+            border-bottom: 2px solid #009688; 
+        }
+
         .khung2, .khung4 {
             background-color: #663300;
             color: white;
@@ -51,7 +66,7 @@
         .khung3 .text-content, 
         .khung4 .text-content {
             flex: 1; /* Cho phép văn bản chiếm không gian còn lại */
-            text-align: justify;
+            text-align: left;
             font-size: 20px;
         } 
         .khung2 .text-content h2, 
@@ -144,7 +159,7 @@
             <ul>
                 <li><a href="index.html">TRANG CHỦ</a></li>
                 <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
-                <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+                <li><a href="lichsuphattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
                 <li><a href="vaitro.html">ỨNG DỤNG</a></li>
                 <li><a href="lienhe.html">LIÊN HỆ</a></li>
             </ul>
@@ -163,7 +178,7 @@
             <ul>
                 <li><a href="index.html">TRANG CHỦ</a></li>
                 <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
-                <li><a href="lichsu_phattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
+                <li><a href="lichsuphattrien.html">LỊCH SỬ PHÁT TRIỂN</a></li>
                 <li><a href="vaitro.html">ỨNG DỤNG</a></li>
                 <li><a href="lienhe.html">LIÊN HỆ</a></li>
             </ul>

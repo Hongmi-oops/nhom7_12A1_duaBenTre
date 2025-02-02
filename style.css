@@ -120,7 +120,6 @@ nav ul li a {
 }
 nav ul li a:hover {
     color: #009688;
-    text-decoration: underline;
 }
 
 
@@ -358,7 +357,6 @@ nav ul li a:hover {
     }
     .sidebar ul li a:hover {
         color: #009688;
-        text-decoration: underline;
     }
     .sidebar .social-links {
         display: flex;
