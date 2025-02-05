@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Hiệu ứng ngừng video
 document.addEventListener("DOMContentLoaded", function () {
-    const ytVideoFrame = document.querySelector(".video-content iframe");
+    const ytIframes = document.querySelectorAll(".info-content iframe, .video-content iframe");
 
     function isElementInViewport(el) {
         if (!el) return false;
@@ -124,39 +124,21 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-    function checkVideoVisibility() {
-        // Điều khiển YouTube iframe
-        if (ytVideoFrame && ytVideoFrame.contentWindow) {
-            if (!isElementInViewport(ytVideoFrame)) {
-                ytVideoFrame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
-            }
-        }
-
-        // Điều khiển tất cả video HTML5
-        const htmlVideos = document.querySelectorAll(".info-content video");
-        htmlVideos.forEach(video => {
-            if (!isElementInViewport(video)) {
-                video.pause();
-                video.dataset.userPaused = "true"; 
+    function checkIframeVisibility() {
+        ytIframes.forEach(iframe => {
+            if (iframe.contentWindow) {
+                if (!isElementInViewport(iframe)) {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+                }
             }
         });
     }
 
-    // Ngăn video tự động phát khi quay lại
-    function handleVideoInteraction() {
-        this.dataset.userPaused = "false"; 
-    }
-
-    document.querySelectorAll(".info-content video").forEach(video => {
-        video.addEventListener("play", handleVideoInteraction);
-    });
-
     // Kiểm tra khi cuộn hoặc thay đổi kích thước
-    checkVideoVisibility(); // Kiểm tra ngay khi tải trang
-    window.addEventListener("scroll", checkVideoVisibility);
-    window.addEventListener("resize", checkVideoVisibility);
+    checkIframeVisibility(); // Kiểm tra ngay khi tải trang
+    window.addEventListener("scroll", checkIframeVisibility);
+    window.addEventListener("resize", checkIframeVisibility);
 });
-
 
 
 
