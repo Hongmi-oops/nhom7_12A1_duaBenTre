@@ -228,6 +228,17 @@
             font-weight: normal;
         }
 
+        @media (max-width: 768px) {
+            .bang1, .bang2, .bang3 {
+                width: 100%;
+            }
+            .bang1 th, .bang2 th, .bang3 th {
+                font-size: 17px;
+            }    
+            .bang1 td, .bang2 td, .bang3 td {
+                font-size: 15px;
+            }         
+        }
     </style>
     <link href="style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -518,7 +529,7 @@
     </div>
     <!--So sánh dừa-->
     <div class="khung1" id="sosanhdua">
-        <h2 style="font-size: 30px;">So sánh các loại dừa</h2>
+        <h2 style="font-size: 30px; text-align: center;">So sánh các loại dừa</h2>
         <table class="bang3">
             <tr>
                 <th>Loại dừa</th>
